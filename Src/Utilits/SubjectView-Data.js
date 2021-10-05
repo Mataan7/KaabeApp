@@ -5,7 +5,7 @@ export const SubjectData = [
   {
     id: 1,
     name: "Math",
-    gardingColors: ["#9D50BB", "#6E48AA"],
+    gardingColors: ["#FF0066", "#FF003B"],
     icon: "math",
   },
   {
@@ -17,7 +17,7 @@ export const SubjectData = [
   {
     id: 3,
     name: "Chemistry",
-    gardingColors: ["#5A2B2B", "#e74c3c"],
+    gardingColors: ["#9D50BB", "#592F9B"],
     icon: "chem",
   },
   {
@@ -25,5 +25,17 @@ export const SubjectData = [
     name: "Physics",
     gardingColors: ["#FDC830", "#f37335"],
     icon: "phy",
+  },
+  {
+    id: 5,
+    name: "Geography",
+    gardingColors: ["#05CEA8", "#35A29F"],
+    icon: "geo",
+  },
+  {
+    id: 6,
+    name: "English",
+    gardingColors: ["#516796", "#344566"],
+    icon: "eng",
   },
 ];

@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Dimensions,
   Image,
+  TouchableOpacity,
 } from "react-native";
 import { SubjectData } from "../Utilits/SubjectView-Data";
 
@@ -15,17 +16,19 @@ export const SubjectView = () => {
   const [listrender, setListRender] = useState(0);
   const images = {
     bio: {
-      uri: require("../../assets/biology.png"),
+      uri: require("../../assets/Subject-Icon/Biology.png"),
     },
     math: {
-      uri: require("../../assets/math.png"),
+      uri: require("../../assets/Subject-Icon/Math.png"),
     },
     chem: {
-      uri: require("../../assets/chemistry.png"),
+      uri: require("../../assets/Subject-Icon/Chemistry.png"),
     },
     phy: {
-      uri: require("../../assets/physics.png"),
+      uri: require("../../assets/Subject-Icon/Physics.png"),
     },
+    geo: { uri: require("../../assets/Subject-Icon/Geography.png") },
+    eng: { uri: require("../../assets/Subject-Icon/English.png") },
   };
 
   const renderItem = ({ item }) => {
@@ -42,17 +45,25 @@ export const SubjectView = () => {
       if (item.icon === "chem") {
         return images.chem.uri;
       }
+      if (item.icon === "geo") {
+        return images.geo.uri;
+      }
+      if (item.icon === "eng") {
+        return images.eng.uri;
+      }
     };
     return (
-      <LinearGradient
-        colors={item.gardingColors}
-        style={styles.subjectcardstyle}
-      >
-        <View style={styles.subjectImageViewStyle}>
-          <Image style={styles.imagesStyle} source={imagepicker()} />
-        </View>
-        <Text style={styles.subjectTextStyle}>{item.name}</Text>
-      </LinearGradient>
+      <TouchableOpacity>
+        <LinearGradient
+          colors={item.gardingColors}
+          style={styles.subjectcardstyle}
+        >
+          <View style={styles.subjectImageViewStyle}>
+            <Image style={styles.imagesStyle} source={imagepicker()} />
+          </View>
+          <Text style={styles.subjectTextStyle}>{item.name}</Text>
+        </LinearGradient>
+      </TouchableOpacity>
     );
   };
 
@@ -85,11 +96,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   imagesStyle: {
-    height: 30,
-    width: 30,
+    height: 35,
+    width: 35,
+    marginRight: 2,
   },
   subjectImageViewStyle: {
-    borderRadius: 27.5,
+    borderRadius: 25,
     backgroundColor: "#fff",
     height: 50,
     width: 50,
@@ -98,7 +110,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   subjectTextStyle: {
-    fontFamily: "Lato_400Regular",
     fontSize: 18,
     color: "#fff",
     marginLeft: 10,
