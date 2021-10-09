@@ -11,7 +11,7 @@ import { UserData } from "../Utilits/UserData";
 import HomeTopBar from "../Utilits/HomeTopBar";
 
 const window = Dimensions.get("window");
-export const HeaderView = () => {
+export const HomeHeaderView = ({ navigation }) => {
   return (
     <View style={styles.svg}>
       <View
@@ -31,7 +31,7 @@ export const HeaderView = () => {
           marginTop: -25,
         }}
       >
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.openDrawer()}>
           <View>
             <Image
               style={{ height: 30, width: 30, marginLeft: 15 }}

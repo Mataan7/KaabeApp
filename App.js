@@ -1,14 +1,19 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { HomeScreen } from "./Src/Screens/Home-Screen";
+import React, { createContext, useState } from "react";
+import { DrawerNavigation } from "./Src/Features/DrawerNavigation";
 import {
   useFonts as useLato,
   Lato_400Regular,
   Lato_700Bold,
 } from "@expo-google-fonts/lato";
 
+export const Context = createContext();
+
 export default function App() {
+  const [currentSubject, setCurrentSubject] = useState("");
+  const currentSubjectData = {
+    subject: currentSubject,
+    setCurrentSubject: setCurrentSubject,
+  };
   const [latoLoaded] = useLato({
     Lato_400Regular,
     Lato_700Bold,
@@ -16,5 +21,10 @@ export default function App() {
   if (!latoLoaded) {
     return null;
   }
-  return <HomeScreen />;
+
+  return (
+    <Context.Provider value={currentSubjectData}>
+      <DrawerNavigation />
+    </Context.Provider>
+  );
 }

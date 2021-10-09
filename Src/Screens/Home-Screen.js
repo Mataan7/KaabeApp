@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet, Text } from "react-native";
-import { HeaderView } from "../Features/HomeScreenTopView";
+import { HomeHeaderView } from "../Features/HomeScreenTopView";
 import { SubjectView } from "../Features/Subjects-View";
 import { RecentVideoList } from "../Features/RecentVideoList";
 import { UserData } from "../Utilits/UserData";
-export const HomeScreen = () => {
+
+export const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <HeaderView />
+      <HomeHeaderView navigation={navigation} />
       <Text style={styles.greetingTextStyle}>
         {`Hi! ${UserData.firstName} what will you learn today?`}
       </Text>
 
-      <SubjectView />
+      <SubjectView navigation={navigation} />
       <View style={styles.recentVideoListViewStyle}>
         <RecentVideoList />
       </View>

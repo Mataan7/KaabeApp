@@ -1,5 +1,3 @@
-import React from "react";
-
 export const UserData = {
   firstName: "Zahal",
   secondName: "Omer",

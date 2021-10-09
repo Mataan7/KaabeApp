@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import {
   View,
@@ -10,10 +10,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { SubjectData } from "../Utilits/SubjectView-Data";
-
+import { Context } from "../../App";
 const window = Dimensions.get("window");
-export const SubjectView = () => {
-  const [listrender, setListRender] = useState(0);
+export const SubjectView = ({ navigation }) => {
+  const value = useContext(Context);
   const images = {
     bio: {
       uri: require("../../assets/Subject-Icon/Biology.png"),
@@ -52,8 +52,14 @@ export const SubjectView = () => {
         return images.eng.uri;
       }
     };
+
     return (
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          value.setCurrentSubject(item.icon);
+          navigation.navigate("Chapters");
+        }}
+      >
         <LinearGradient
           colors={item.gardingColors}
           style={styles.subjectcardstyle}
