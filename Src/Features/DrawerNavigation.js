@@ -1,12 +1,12 @@
 import "react-native-gesture-handler";
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Image, Text } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
   DrawerItem,
-  DrawerView,
+  useDrawerProgress,
 } from "@react-navigation/drawer";
 import { ChapterScreen } from "../../Src/Screens/ChaptersScreen";
 import { HomeScreen } from "../../Src/Screens/Home-Screen";
@@ -15,45 +15,61 @@ import { ProfileScreen } from "../Screens/ProfileScreen";
 import { SettingScreen } from "../Screens/SettingScreen";
 import { Feather, AntDesign } from "@expo/vector-icons";
 import { UserData } from "../Utilits/UserData";
+import Animated from "react-native-reanimated";
+
 const ScreenStack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 function StackScreens() {
+  const progress = useDrawerProgress();
+
+  const scale = Animated.interpolateNode(progress, {
+    inputRange: [0, 1],
+    outputRange: [1, 0.8],
+  });
+
+  const drawerAnimationStyle = {
+    transform: [{ scale }],
+  };
+
   return (
-    <ScreenStack.Navigator>
-      <ScreenStack.Screen
-        name="HomeScreen"
-        options={{ headerShown: false, animation: "slide_from_bottom" }}
-        component={HomeScreen}
-      />
-      <ScreenStack.Screen
-        name="Chapters"
-        component={ChapterScreen}
-        options={{
-          headerShown: false,
-          animation: "slide_from_right",
-          presentation: "modal",
-        }}
-      />
-      <ScreenStack.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{
-          headerShown: false,
-          animation: "slide_from_right",
-          presentation: "modal",
-        }}
-      />
-      <ScreenStack.Screen
-        name="Setting"
-        component={SettingScreen}
-        options={{
-          headerShown: false,
-          animation: "slide_from_right",
-          presentation: "modal",
-        }}
-      />
-    </ScreenStack.Navigator>
+    <Animated.View style={{ flex: 1, ...drawerAnimationStyle }}>
+      <ScreenStack.Navigator>
+        <ScreenStack.Screen
+          name="HomeScreen"
+          options={{ headerShown: false, animation: "slide_from_bottom" }}
+        >
+          {(props) => <HomeScreen {...props} />}
+        </ScreenStack.Screen>
+        <ScreenStack.Screen
+          name="Chapters"
+          component={ChapterScreen}
+          options={{
+            headerShown: false,
+            animation: "slide_from_right",
+            presentation: "modal",
+          }}
+        />
+        <ScreenStack.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{
+            headerShown: false,
+            animation: "slide_from_right",
+            presentation: "modal",
+          }}
+        />
+        <ScreenStack.Screen
+          name="Setting"
+          component={SettingScreen}
+          options={{
+            headerShown: false,
+            animation: "slide_from_right",
+            presentation: "modal",
+          }}
+        />
+      </ScreenStack.Navigator>
+    </Animated.View>
   );
 }
 
@@ -72,7 +88,7 @@ const DrawerContent = (props) => {
             <Text style={styles.userNameStyle}>
               {UserData.firstName} {UserData.secondName}
             </Text>
-            <Text style={styles.numberTextStyle}>0634572516</Text>
+            <Text style={styles.numberTextStyle}>{UserData.number}</Text>
           </View>
         </View>
         <DrawerItem
@@ -123,12 +139,27 @@ const DrawerContent = (props) => {
 export const DrawerNavigation = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
+      <Drawer.Navigator
+        drawerContent={(props) => {
+          return <DrawerContent {...props} />;
+        }}
+      >
         <Drawer.Screen
           name="Home"
-          options={{ headerShown: false, swipeEdgeWidth: 400 }}
-          component={StackScreens}
-        />
+          options={{
+            headerShown: false,
+            swipeEdgeWidth: 50,
+            drawerType: "slide",
+            overlayColor: "transparent",
+            drawerStyle: {
+              width: "50%",
+              backgroundColor: "transparent",
+            },
+            sceneContainerStyle: { backgroundColor: "transparent" },
+          }}
+        >
+          {(props) => <StackScreens {...props} />}
+        </Drawer.Screen>
       </Drawer.Navigator>
     </NavigationContainer>
   );

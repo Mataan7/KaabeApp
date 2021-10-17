@@ -7,10 +7,64 @@ import {
   Image,
   StatusBar,
 } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 
-export const HeaderView = ({ subject, navigation }) => {
+const math = { name: "Math", gardingColors: ["#FF5D83", "#FF003B"] };
+const bio = { name: "Biology", gardingColors: ["#00FF46", "#51A42B"] };
+const chem = { name: "Chemistry", gardingColors: ["#9D50BB", "#592F9B"] };
+const geo = { name: "Geography", gardingColors: ["#05CEA8", "#35A29F"] };
+const eng = { name: "English", gardingColors: ["#6579A3", "#344566"] };
+const phy = { name: "Physics", gardingColors: ["#FDC830", "#f37335"] };
+export const HeaderView = ({
+  subject,
+  navigation,
+  totalChapters,
+  imageSource,
+}) => {
+  let Colors = [];
+  let subjectName = " ";
+  const setter = () => {
+    if (subject == "phy") {
+      Colors = phy.gardingColors;
+      subjectName = phy.name;
+      return;
+    }
+    if (subject === "math") {
+      Colors = math.gardingColors;
+      subjectName = math.name;
+      return;
+    }
+    if (subject === "bio") {
+      Colors = bio.gardingColors;
+      subjectName = bio.name;
+      return;
+    }
+    if (subject === "chem") {
+      Colors = chem.gardingColors;
+      subjectName = chem.name;
+      return;
+    }
+    if (subject === "geo") {
+      Colors = geo.gardingColors;
+      subjectName = geo.name;
+      return;
+    }
+    if (subject === "eng") {
+      Colors = eng.gardingColors;
+      subjectName = eng.name;
+      return;
+    }
+  };
+
+  setter();
+
   return (
-    <View style={Styles.container}>
+    <LinearGradient
+      start={{ x: 1, y: 0.2 }}
+      colors={Colors}
+      style={Styles.container}
+    >
       <View
         style={{
           flexDirection: "row",
@@ -19,11 +73,8 @@ export const HeaderView = ({ subject, navigation }) => {
         }}
       >
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <View>
-            <Image
-              style={{ height: 22, width: 25, marginLeft: 15 }}
-              source={require("../../assets/arrow.png")}
-            />
+          <View style={{ paddingLeft: 15 }}>
+            <AntDesign name="arrowleft" color="#fff" size={29} />
           </View>
         </TouchableOpacity>
         <View
@@ -48,12 +99,34 @@ export const HeaderView = ({ subject, navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={{ flex: 1, justifyContent: "flex-end" }}>
-        <Text style={Styles.userNameStyle}>{subject}</Text>
+      <View
+        style={{
+          flex: 1,
 
-        <Text style={Styles.schoolTextStyle}>12 Chapters</Text>
+          flexDirection: "row",
+        }}
+      >
+        <View
+          style={{
+            flex: 0.6,
+            justifyContent: "flex-end",
+          }}
+        >
+          <Text style={Styles.userNameStyle}>{subjectName}</Text>
+          <Text style={Styles.schoolTextStyle}>{totalChapters} Chapters</Text>
+        </View>
+        <View
+          style={{
+            flex: 0.4,
+            justifyContent: "center",
+            alignItems: "flex-end",
+            paddingRight: 20,
+          }}
+        >
+          <Image style={{ height: 100, width: 100 }} source={imageSource} />
+        </View>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 
@@ -81,6 +154,7 @@ const Styles = StyleSheet.create({
     fontSize: 15,
     marginBottom: 20,
     marginLeft: 20,
+
     fontFamily: "Lato_700Bold",
   },
 });

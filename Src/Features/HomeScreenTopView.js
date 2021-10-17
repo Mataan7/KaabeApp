@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
     height: window.height / 2.8,
     width: window.width,
     justifyContent: "center",
+    overflow: "hidden",
   },
   profileImageStyle: {
     height: "150%",

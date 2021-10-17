@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Dimensions } from "react-native";
 import Svg, { Defs, LinearGradient, Stop, Path } from "react-native-svg";
-const window = Dimensions.get("window");
+
 function HomeTopBar({ children, ...props }) {
   return (
     <Svg
@@ -16,12 +16,12 @@ function HomeTopBar({ children, ...props }) {
           id="prefix__a"
           x1={0.5}
           y1={482.5}
-          x2={1440.5}
+          x2={1600.5}
           y2={482.5}
           gradientUnits="userSpaceOnUse"
         >
-          <Stop offset={0} stopColor="#36d1dc" />
-          <Stop offset={1} stopColor="#5b86e5" />
+          <Stop offset={0} stopColor="#0B76D2" />
+          <Stop offset={1} stopColor="#03B1E1" />
         </LinearGradient>
       </Defs>
       <Path d="M1440.5 709.5L.5 934.5V.5h1440z" fill="url(#prefix__a)" />

@@ -9,6 +9,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
+
 import { SubjectData } from "../Utilits/SubjectView-Data";
 import { Context } from "../../App";
 const window = Dimensions.get("window");
@@ -73,7 +74,6 @@ export const SubjectView = ({ navigation }) => {
     );
   };
 
-  console.log(window.height, window.width);
   const numColumns = 2;
   return (
     <View style={styles.container}>

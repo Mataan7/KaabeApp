@@ -1,31 +1,253 @@
-import React from "react";
 import { StyleSheet } from "react-native";
-export const ChaptersData = [
-  { id: "1", name: "Chapter 1", style: {} },
-  { id: "2", name: "Chapter 2", style: {} },
-  { id: "3", name: "Chapter 3", style: {} },
-  { id: "4", name: "Chapter 4", style: {} },
-  { id: "5", name: "Chapter 5", style: {} },
-  { id: "6", name: "Chapter 6", style: {} },
-  { id: "7", name: "Chapter 7", style: {} },
-  { id: "8", name: "Chapter 8", style: {} },
-  { id: "9", name: "Chapter 9", style: {} },
-  { id: "10", name: "Chapter 10", style: {} },
-  { id: "11", name: "Chapter 11", style: {} },
+
+export const BioChapters = [
   {
-    id: "12",
-    name: "Chapter 12",
+    id: "1",
+    chaptername: "Intro to Biology",
     style: StyleSheet.create({
       listView: {
         height: 70,
         borderRadius: 10,
         margin: 10,
-        marginBottom: 20,
+        marginTop: 20,
         elevation: 10,
         flexDirection: "row",
         alignItems: "center",
-        paddingLeft: 15,
+      },
+    }),
+  },
+  { id: "2", chaptername: "Biology Lab", style: {} },
+  { id: "3", chaptername: "Biodiversity", style: {} },
+  { id: "4", chaptername: "Cell Biology", style: {} },
+  { id: "5", chaptername: "Cell Cycle", style: {} },
+  { id: "6", chaptername: "Enzymes", style: {} },
+  { id: "7", chaptername: "Bioenergetics", style: {} },
+  { id: "8", chaptername: "Nutrition", style: {} },
+  {
+    id: "9",
+    chaptername: "Transport",
+    style: StyleSheet.create({
+      listView: {
+        height: 70,
+        borderRadius: 10,
+        margin: 10,
+        marginBottom: 15,
+        elevation: 10,
+        flexDirection: "row",
+        alignItems: "center",
       },
     }),
   },
 ];
+
+export const ChemChapters = [
+  {
+    id: "1",
+    chaptername: "Intro to Biology",
+    style: StyleSheet.create({
+      listView: {
+        height: 70,
+        borderRadius: 10,
+        margin: 10,
+        marginTop: 20,
+        elevation: 10,
+        flexDirection: "row",
+        alignItems: "center",
+      },
+    }),
+  },
+  { id: "2", chaptername: "Biology Lab", style: {} },
+  { id: "3", chaptername: "Biodiversity", style: {} },
+  { id: "4", chaptername: "Cell Biology", style: {} },
+  { id: "5", chaptername: "Cell Cycle", style: {} },
+  { id: "6", chaptername: "Enzymes", style: {} },
+  { id: "7", chaptername: "Bioenergetics", style: {} },
+  { id: "8", chaptername: "Nutrition", style: {} },
+  { id: "9", chaptername: "Nutrition", style: {} },
+  {
+    id: "10",
+    chaptername: "Transport",
+    style: StyleSheet.create({
+      listView: {
+        height: 70,
+        borderRadius: 10,
+        margin: 10,
+        marginBottom: 15,
+        elevation: 10,
+        flexDirection: "row",
+        alignItems: "center",
+      },
+    }),
+  },
+];
+export const MathChapters = [
+  {
+    id: "1",
+    chaptername: "Intro to Biology",
+    style: StyleSheet.create({
+      listView: {
+        height: 70,
+        borderRadius: 10,
+        margin: 10,
+        marginTop: 20,
+        elevation: 10,
+        flexDirection: "row",
+        alignItems: "center",
+      },
+    }),
+  },
+  { id: "2", chaptername: "Biology Lab", style: {} },
+  { id: "3", chaptername: "Biodiversity", style: {} },
+  { id: "4", chaptername: "Cell Biology", style: {} },
+  { id: "5", chaptername: "Cell Cycle", style: {} },
+  { id: "6", chaptername: "Enzymes", style: {} },
+  { id: "7", chaptername: "Bioenergetics", style: {} },
+  { id: "8", chaptername: "Nutrition", style: {} },
+  { id: "9", chaptername: "Nutrition", style: {} },
+  { id: "10", chaptername: "Nutrition", style: {} },
+  { id: "11", chaptername: "Nutrition", style: {} },
+
+  {
+    id: "12",
+    chaptername: "Transport",
+    style: StyleSheet.create({
+      listView: {
+        height: 70,
+        borderRadius: 10,
+        margin: 10,
+        marginBottom: 15,
+        elevation: 10,
+        flexDirection: "row",
+        alignItems: "center",
+      },
+    }),
+  },
+];
+
+export const PhyChapters = [
+  {
+    id: "1",
+    chaptername: "Intro to Biology",
+    style: StyleSheet.create({
+      listView: {
+        height: 70,
+        borderRadius: 10,
+        margin: 10,
+        marginTop: 20,
+        elevation: 10,
+        flexDirection: "row",
+        alignItems: "center",
+      },
+    }),
+  },
+  { id: "2", chaptername: "Biology Lab", style: {} },
+  { id: "3", chaptername: "Biodiversity", style: {} },
+  { id: "4", chaptername: "Cell Biology", style: {} },
+  { id: "5", chaptername: "Cell Cycle", style: {} },
+  { id: "6", chaptername: "Enzymes", style: {} },
+  { id: "7", chaptername: "Bioenergetics", style: {} },
+  { id: "8", chaptername: "Nutrition", style: {} },
+  {
+    id: "9",
+    chaptername: "Transport",
+    style: StyleSheet.create({
+      listView: {
+        height: 70,
+        borderRadius: 10,
+        margin: 10,
+        marginBottom: 15,
+        elevation: 10,
+        flexDirection: "row",
+        alignItems: "center",
+      },
+    }),
+  },
+];
+
+export const GeoChapters = [
+  {
+    id: "1",
+    chaptername: "Intro to Biology",
+    style: StyleSheet.create({
+      listView: {
+        height: 70,
+        borderRadius: 10,
+        margin: 10,
+        marginTop: 20,
+        elevation: 10,
+        flexDirection: "row",
+        alignItems: "center",
+      },
+    }),
+  },
+  { id: "2", chaptername: "Biology Lab", style: {} },
+  { id: "3", chaptername: "Biodiversity", style: {} },
+  { id: "4", chaptername: "Cell Biology", style: {} },
+  { id: "5", chaptername: "Cell Cycle", style: {} },
+  { id: "6", chaptername: "Enzymes", style: {} },
+  { id: "7", chaptername: "Bioenergetics", style: {} },
+
+  {
+    id: "8",
+    chaptername: "Transport",
+    style: StyleSheet.create({
+      listView: {
+        height: 70,
+        borderRadius: 10,
+        margin: 10,
+        marginBottom: 15,
+        elevation: 10,
+        flexDirection: "row",
+        alignItems: "center",
+      },
+    }),
+  },
+];
+
+export const EngChapters = [
+  {
+    id: "1",
+    chaptername: "Intro to Biology",
+    style: StyleSheet.create({
+      listView: {
+        height: 70,
+        borderRadius: 10,
+        margin: 10,
+        marginTop: 20,
+        elevation: 10,
+        flexDirection: "row",
+        alignItems: "center",
+      },
+    }),
+  },
+  { id: "2", chaptername: "Biology Lab", style: {} },
+  { id: "3", chaptername: "Biodiversity", style: {} },
+  { id: "4", chaptername: "Cell Biology", style: {} },
+  { id: "5", chaptername: "Cell Cycle", style: {} },
+  { id: "6", chaptername: "Bioenergetics", style: {} },
+  { id: "7", chaptername: "Nutrition", style: {} },
+  {
+    id: "8",
+    chaptername: "Transport",
+    style: StyleSheet.create({
+      listView: {
+        height: 70,
+        borderRadius: 10,
+        margin: 10,
+        marginBottom: 15,
+        elevation: 10,
+        flexDirection: "row",
+        alignItems: "center",
+      },
+    }),
+  },
+];
+
+export const TotalChapters = {
+  bio: 9,
+  chem: 10,
+  phy: 9,
+  eng: 8,
+  geo: 8,
+  math: 12,
+};
