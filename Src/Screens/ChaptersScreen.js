@@ -84,7 +84,13 @@ export const ChapterScreen = ({ navigation }) => {
           ...item.style.listView,
         }}
       >
-        <TouchableOpacity style={[Styles.listView]}>
+        <TouchableOpacity
+          style={[Styles.listView]}
+          onPress={() => {
+            value.setCurrentChapter(item.chaptername);
+            navigation.navigate("ChapterContentsScreen");
+          }}
+        >
           <Image style={Styles.subjectIconStyle} source={imageSource} />
           <View>
             <Text style={Styles.listTextStyle}>Chapter {item.id}</Text>

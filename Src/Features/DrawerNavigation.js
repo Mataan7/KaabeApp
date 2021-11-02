@@ -9,6 +9,7 @@ import {
   useDrawerProgress,
 } from "@react-navigation/drawer";
 import { ChapterScreen } from "../../Src/Screens/ChaptersScreen";
+import { ChapterContentsScreen } from "../Screens/ChapterContentsScreen";
 import { HomeScreen } from "../../Src/Screens/Home-Screen";
 import { NavigationContainer } from "@react-navigation/native";
 import { ProfileScreen } from "../Screens/ProfileScreen";
@@ -16,60 +17,134 @@ import { SettingScreen } from "../Screens/SettingScreen";
 import { Feather, AntDesign } from "@expo/vector-icons";
 import { UserData } from "../Utilits/UserData";
 import Animated from "react-native-reanimated";
+import { VideoListScreen } from "../Screens/VideoListSceen";
+import { VideoPlayerScreen } from "../Screens/VideoPlayerScreen";
+import { EbooksListScreen } from "../Screens/EbooksListScreen";
+import { PdfViewerScreen } from "../Screens/PdfViewerScreen";
+import { PdfViewer } from "./PdfViewer";
 
 const ScreenStack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
+const DrawerScreens = () => {
+  return (
+    <Drawer.Navigator
+      drawerContent={(props) => {
+        return <DrawerContent {...props} />;
+      }}
+    >
+      <Drawer.Screen
+        name="Home"
+        options={{
+          headerShown: false,
+          swipeEdgeWidth: 50,
+
+          drawerStyle: {
+            width: "60%",
+            backgroundColor: "#fff",
+          },
+          sceneContainerStyle: { backgroundColor: "transparent" },
+        }}
+      >
+        {(props) => <HomeScreen {...props} />}
+      </Drawer.Screen>
+    </Drawer.Navigator>
+  );
+};
+
 function StackScreens() {
-  const progress = useDrawerProgress();
+  //const progress = useDrawerProgress();
 
-  const scale = Animated.interpolateNode(progress, {
-    inputRange: [0, 1],
-    outputRange: [1, 0.8],
-  });
+  //const scale = Animated.interpolateNode(progress, {
+  // inputRange: [0, 1],
+  //outputRange: [1, 0.8],
+  //});
 
-  const drawerAnimationStyle = {
-    transform: [{ scale }],
-  };
+  //const drawerAnimationStyle = {
+  //transform: [{ scale }],
+  //};
 
   return (
-    <Animated.View style={{ flex: 1, ...drawerAnimationStyle }}>
-      <ScreenStack.Navigator>
-        <ScreenStack.Screen
-          name="HomeScreen"
-          options={{ headerShown: false, animation: "slide_from_bottom" }}
-        >
-          {(props) => <HomeScreen {...props} />}
-        </ScreenStack.Screen>
-        <ScreenStack.Screen
-          name="Chapters"
-          component={ChapterScreen}
-          options={{
-            headerShown: false,
-            animation: "slide_from_right",
-            presentation: "modal",
-          }}
-        />
-        <ScreenStack.Screen
-          name="Profile"
-          component={ProfileScreen}
-          options={{
-            headerShown: false,
-            animation: "slide_from_right",
-            presentation: "modal",
-          }}
-        />
-        <ScreenStack.Screen
-          name="Setting"
-          component={SettingScreen}
-          options={{
-            headerShown: false,
-            animation: "slide_from_right",
-            presentation: "modal",
-          }}
-        />
-      </ScreenStack.Navigator>
-    </Animated.View>
+    <ScreenStack.Navigator>
+      <ScreenStack.Screen
+        name="HomeScreen"
+        options={{ headerShown: false, animation: "slide_from_bottom" }}
+      >
+        {(props) => <DrawerScreens {...props} />}
+      </ScreenStack.Screen>
+      <ScreenStack.Screen
+        name="Chapters"
+        component={ChapterScreen}
+        options={{
+          headerShown: false,
+          animation: "slide_from_right",
+          presentation: "modal",
+        }}
+      />
+      <ScreenStack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          headerShown: false,
+          animation: "slide_from_right",
+          presentation: "modal",
+        }}
+      />
+      <ScreenStack.Screen
+        name="PdfViewerScreen"
+        component={PdfViewerScreen}
+        options={{
+          headerShown: false,
+
+          presentation: "modal",
+        }}
+      />
+      <ScreenStack.Screen
+        name="VideoListScreen"
+        component={VideoListScreen}
+        options={{
+          headerShown: false,
+          animation: "slide_from_right",
+          presentation: "modal",
+        }}
+      />
+      <ScreenStack.Screen
+        name="EbooksListScreen "
+        component={EbooksListScreen}
+        options={{
+          headerShown: false,
+          animation: "slide_from_right",
+          presentation: "modal",
+        }}
+      />
+      <ScreenStack.Screen
+        name="VideoPlayerScreen"
+        component={VideoPlayerScreen}
+        options={{
+          headerShown: false,
+
+          presentation: "modal",
+        }}
+      />
+      <ScreenStack.Screen
+        name="Setting"
+        component={SettingScreen}
+        options={{
+          headerShown: false,
+          animation: "slide_from_right",
+          presentation: "modal",
+        }}
+      />
+      <ScreenStack.Screen
+        name="ChapterContentsScreen"
+        component={ChapterContentsScreen}
+        options={{
+          headerShown: false,
+          animation: "slide_from_right",
+          presentation: "modal",
+        }}
+      />
+    </ScreenStack.Navigator>
   );
 }
 
@@ -110,7 +185,7 @@ const DrawerContent = (props) => {
         <DrawerItem
           label="Subscribe Now"
           labelStyle={{ marginLeft: -18, fontSize: 15, color: "black" }}
-          onPress={() => props.navigation.navigate("Setting")}
+          onPress={() => props.navigation.navigate("ChapterContentsScreen")}
           icon={() => <AntDesign name="shoppingcart" color="black" size={25} />}
         />
         <DrawerItem
@@ -139,28 +214,7 @@ const DrawerContent = (props) => {
 export const DrawerNavigation = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
-        drawerContent={(props) => {
-          return <DrawerContent {...props} />;
-        }}
-      >
-        <Drawer.Screen
-          name="Home"
-          options={{
-            headerShown: false,
-            swipeEdgeWidth: 50,
-            drawerType: "slide",
-            overlayColor: "transparent",
-            drawerStyle: {
-              width: "50%",
-              backgroundColor: "transparent",
-            },
-            sceneContainerStyle: { backgroundColor: "transparent" },
-          }}
-        >
-          {(props) => <StackScreens {...props} />}
-        </Drawer.Screen>
-      </Drawer.Navigator>
+      <StackScreens />
     </NavigationContainer>
   );
 };

@@ -32,7 +32,7 @@ export const HomeHeaderView = ({ navigation }) => {
         }}
       >
         <TouchableOpacity onPress={() => navigation.openDrawer()}>
-          <View>
+          <View style={{ height: 50, width: 60 }}>
             <Image
               style={{ height: 30, width: 30, marginLeft: 15 }}
               source={require("../../assets/layout.png")}

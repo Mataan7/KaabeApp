@@ -20,7 +20,10 @@ export const HeaderView = ({
   subject,
   navigation,
   totalChapters,
+  contentData,
   imageSource,
+  inContentWindow,
+  chapter,
 }) => {
   let Colors = [];
   let subjectName = " ";
@@ -58,6 +61,26 @@ export const HeaderView = ({
   };
 
   setter();
+  const ChaptersText = () => {
+    return (
+      <>
+        <Text style={Styles.userNameStyle}>{subjectName}</Text>
+        <Text style={Styles.schoolTextStyle}>{totalChapters} Chapters</Text>
+      </>
+    );
+  };
+
+  const ContentText = () => {
+    return (
+      <>
+        <Text style={Styles.userNameStyle}>{chapter}</Text>
+        <Text style={Styles.schoolTextStyle}>
+          {contentData.totalVideos} Videos | {contentData.totalEbooks} Ebooks |{" "}
+          {contentData.totalTests} Tests
+        </Text>
+      </>
+    );
+  };
 
   return (
     <LinearGradient
@@ -108,12 +131,11 @@ export const HeaderView = ({
       >
         <View
           style={{
-            flex: 0.6,
+            flex: 0.7,
             justifyContent: "flex-end",
           }}
         >
-          <Text style={Styles.userNameStyle}>{subjectName}</Text>
-          <Text style={Styles.schoolTextStyle}>{totalChapters} Chapters</Text>
+          {inContentWindow ? <ContentText /> : <ChaptersText />}
         </View>
         <View
           style={{
@@ -132,7 +154,7 @@ export const HeaderView = ({
 
 const Styles = StyleSheet.create({
   container: {
-    height: 200,
+    height: 215,
     backgroundColor: "blue",
   },
   textStyle: {

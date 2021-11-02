@@ -9,10 +9,15 @@ import {
 export const Context = createContext();
 
 export default function App() {
+  const [currentChapter, setCurrentChapter] = useState("");
   const [currentSubject, setCurrentSubject] = useState("");
+  const [inContentWindow, setInContentWindow] = useState(true);
   const currentSubjectData = {
     subject: currentSubject,
     setCurrentSubject: setCurrentSubject,
+    chapter: currentChapter,
+    setCurrentChapter: setCurrentChapter,
+    inContentWindow: inContentWindow,
   };
   const [latoLoaded] = useLato({
     Lato_400Regular,
