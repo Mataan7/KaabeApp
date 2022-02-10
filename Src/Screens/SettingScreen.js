@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { PdfViewer } from "../Features/PdfViewer";
+import { View, Text, TouchableOpacity } from "react-native";
+import { QuizScreen } from "./QuizScreen";
 
-export const SettingScreen = () => {
+export const SettingScreen = ({ navigation }) => {
   return (
     <View
       style={{
@@ -12,7 +12,18 @@ export const SettingScreen = () => {
         alignItems: "center",
       }}
     >
-      <Text>Setting Screen</Text>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("QuizScreen")}
+        style={{
+          height: 50,
+          width: 80,
+          backgroundColor: "blue",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ color: "#fff" }}>Click Here</Text>
+      </TouchableOpacity>
     </View>
   );
 };

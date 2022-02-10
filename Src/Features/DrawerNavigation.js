@@ -21,7 +21,7 @@ import { VideoListScreen } from "../Screens/VideoListSceen";
 import { VideoPlayerScreen } from "../Screens/VideoPlayerScreen";
 import { EbooksListScreen } from "../Screens/EbooksListScreen";
 import { PdfViewerScreen } from "../Screens/PdfViewerScreen";
-import { PdfViewer } from "./PdfViewer";
+import { QuizScreen } from "../Screens/QuizScreen";
 
 const ScreenStack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -84,6 +84,15 @@ function StackScreens() {
       <ScreenStack.Screen
         name="Profile"
         component={ProfileScreen}
+        options={{
+          headerShown: false,
+          animation: "slide_from_right",
+          presentation: "modal",
+        }}
+      />
+      <ScreenStack.Screen
+        name="QuizScreen"
+        component={QuizScreen}
         options={{
           headerShown: false,
           animation: "slide_from_right",
